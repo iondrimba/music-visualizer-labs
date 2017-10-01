@@ -3,7 +3,7 @@
 ## Experimenting WebAudio visualizations
 
 This repo is only used for experimentation purposes
-A will create a series of samples experimenting audio visualization using WebAudio API
+I will create a series of samples experimenting audio visualization using WebAudio API
 
 ### [First Demo](https://iondrimba.github.io/music-visualizer-labs/)
 
