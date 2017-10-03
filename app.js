@@ -1,121 +1,30 @@
 function App() {
-  var d = [];
-  var audioElement = document.getElementById('audioElement');
-  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  var analyser = audioCtx.createAnalyser();
 
-  var file = 'demo.mp3';
-  var playing = false;
-  var canvasWidth = document.body.clientWidth;
-  audioElement.volume = .1;
+  this.init = function () {
+    var firstCanvas = new CanvasDraw(new FirstDrawer());
+    firstCanvas.init('#first-wave');
 
-  var source = audioCtx.createMediaElementSource(audioElement);
-  source.connect(analyser);
-  source.connect(audioCtx.destination);
-  var bufferLength = analyser.frequencyBinCount;
-  var frequencyData = new Uint8Array(bufferLength);
-  var frequencyDataFloat = new Float32Array(bufferLength);
-  analyser.smoothingTimeConstant = .5;
+    var firstAudio = document.getElementById('first');
+    var firstDemo = new Demo('demo.mp3', '.first-demo');
+    firstDemo.init(firstAudio, firstCanvas);
+    firstDemo.loadSound();
 
-  var canvas = document.getElementById('wave');
-  drawCanvasWidth();
-  drawCanvasHeight();
+    var secondCanvas = new CanvasDraw(new SecondDrawer());
+    secondCanvas.init('#second-wave');
 
-  var ctx = canvas.getContext('2d');
-  ctx.lineWidth = 1;
+    var secondAudio = document.getElementById('second');
+    var secondDemo = new Demo('second-demo.mp3', '.second-demo');
+    secondDemo.init(secondAudio, secondCanvas);
+    secondDemo.loadSound();
 
-  audioElement.addEventListener('playing', function () {
-    playing = true;
-  });
-  audioElement.addEventListener('pause', function () {
-    playing = false;
-  });
-  audioElement.addEventListener('ended', function () {
-    playing = true;
-  });
-
-  window.onresize = function () {
-    canvasWidth = document.body.clientWidth;
-    drawCanvasWidth();
-  };
-
-  this.loadSound = function() {
-    var request = new XMLHttpRequest();
-    request.open('GET', file, true);
-    request.onprogress = function (evt) {
-      var percent = Math.floor((evt.loaded / evt.total) * 100);
-      var loading = document.getElementsByClassName('loading')[0];
-      loading.innerHTML = 'loading... ' + percent + ' %';
-
-      if (percent == 100) {
-        loading.remove();
-      }
-    }
-    request.onload = function () {
-      audioElement.src = file;
-      audioElement.load();
-    }
-    request.send();
+    window.onresize = function () {
+      firstDemo.resize();
+      secondDemo.resize();
+    };
   }
-
-  function drawCanvasWidth() {
-    canvas.style.width = (document.getElementsByTagName('section')[0].getBoundingClientRect().width - 100) + 'px';
-    canvas.width = parseInt(canvas.style.width);
-  }
-
-  function drawCanvasHeight() {
-    canvas.style.height = '200px';
-    canvas.height = parseInt(canvas.style.height);
-  }
-
-  function drawBar(left, top, width, height, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(left, top, width, height);
-  }
-
-  function drawWave() {
-    if (playing) {
-      analyser.getByteFrequencyData(frequencyData)
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      var width = 5;
-      for (var j = 0; j < canvas.width; j++) {
-        var left = (width + 1) * j;
-        var topByte = (frequencyData[j]);
-
-        var y = (topByte);
-
-        if ((y > 80) && (y < 200)) {
-          drawBar(left, y + y, width, +5, '#d2f3ff');
-        }
-
-        if ((y > 55) && (y < 80)) {
-          drawBar(left, y + y, width, +5, '#275cf4');
-        }
-
-        if ((y > 50) && (y < 55)) {
-          drawBar(left, y + y, width, +5, '#4e75c2');
-        }
-
-        if ((y > 45) && (y < 50)) {
-          drawBar(left, y + y, width, +5, '#edfef6');
-        }
-
-        drawBar(left, 0, width, y, '#cd0126');
-
-        drawBar(left, 0, width, y - 50, '#860018');
-      }
-    }
-
-    setTimeout(function () {
-      requestAnimationFrame(drawWave);
-    }, 30);
-  }
-
-  drawWave();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   var app = new App();
-  app.loadSound();
+  app.init();
 })

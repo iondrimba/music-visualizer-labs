@@ -12,21 +12,44 @@
 </head>
 
 <body>
-  <section>
-    <h1>First Demo</h1>
-    <a href="https://lazerhawk.bandcamp.com/" target="_blank" rel="noopener noreferrer">Artist - Lazerhawk </a>/
-    <a href="https://lazerhawk.bandcamp.com/track/space-trash" target="_blank" rel="noopener noreferrer"> Track - Space Trash</a>
+  <section class="first-demo">
+    <div class="credits">
+      <h1>First Demo</h1>
+      <a href="https://lazerhawk.bandcamp.com/" target="_blank" rel="noopener noreferrer">Artist - Lazerhawk </a>/
+      <a href="https://lazerhawk.bandcamp.com/track/space-trash" target="_blank" rel="noopener noreferrer"> Track - Space Trash</a>
+      <br>
+    </div>
     <br>
-    <br>
-    <audio id="audioElement"></audio>
-    <canvas id="wave">
+    <audio id="first"></audio>
+    <canvas id="first-wave">
     </canvas>
-    <div>
-      <button onclick="audioElement.play()">Play</button>
-      <button onclick="audioElement.pause()">Pause</button>
-      <span class="loading">loading sound...</span>
+    <div class="controls">
+      <button class="play">Play</button>
+      <button class="pause">Pause</button>
     </div>
   </section>
+  <br><br>
+  <section class="second-demo">
+    <div class="credits">
+      <h1>Second Demo</h1>
+      <a href="https://midwestcollective.bandcamp.com/album/odyssey" target="_blank" rel="noopener noreferrer">Artist - HOME </a>/
+      <a href="https://midwestcollective.bandcamp.com/track/native" target="_blank" rel="noopener noreferrer"> Track - Native</a>
+      <br>
+    </div>
+    <br>
+    <audio id="second"></audio>
+    <canvas id="second-wave">
+    </canvas>
+    <div class="controls">
+      <button class="play">Play</button>
+      <button class="pause">Pause</button>
+    </div>
+  </section>
+  <script src="./loader.js"></script>
+  <script src="./canvas.js"></script>
+  <script src="./demo.js"></script>
+  <script src="./first.js"></script>
+  <script src="./second.js"></script>
   <script src="app.js"></script>
 </body>
 

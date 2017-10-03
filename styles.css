@@ -10,13 +10,17 @@ html, body {
 }
 
 section {
-  padding: 50px;
+  padding: 50px 0;
+}
+
+.credits, .controls {
+  margin-left: 20px;
 }
 
 canvas {
-  background-color: #000;
+  background-color: inherit;
   transform: scaleY(-1);
-  height: 200px;
+  height: 300px;
 }
 
 h1 {
