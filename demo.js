@@ -2,13 +2,13 @@ function Demo(file, selector) {
   this.file = file;
   this.init = function (audioElement, canvasDraw) {
     this.audioElement = audioElement;
-    this.loader = new Loader();
     this.canvasDraw = canvasDraw;
+
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     this.analyser = audioCtx.createAnalyser();
 
     this.loader = new Loader();
-    this.loader.callback = this.onProgress;
+    this.loader.callback = this.onProgress.bind(this);
     this.loader.complete = this.complete.bind(this);
 
     this.btnPlay = document.querySelector(selector).querySelector('.play');
