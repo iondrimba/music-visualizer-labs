@@ -20,27 +20,27 @@ function SecondDrawer() {
       var y = (topByte);
 
       if ((y > 80) && (y < 200)) {
-        drawBar(props.ctx, left, y + y, width, y + 25, '#d2f3ff');
+        drawBar(props.ctx, left, y + y, width, y + 25, '#8dd835');
       }
 
       if ((y > 55) && (y <= 80)) {
-        drawBar(props.ctx, left, y + y, width, +80, '#275cf4');
+        drawBar(props.ctx, left, y + y, width, +80, '#d5881a');
       }
 
       if ((y > 50) && (y <= 55)) {
-        drawBar(props.ctx, left, y + y, width, +60, '#4e75c2');
+        drawBar(props.ctx, left, y + y, width, +60, '#d24742');
       }
 
       if ((y > 45) && (y <= 50)) {
-        drawBar(props.ctx, left, y + y, width, +40, '#edfef6');
+        drawBar(props.ctx, left, y + y, width, +40, '#f3161b');
       }
 
 
       if ((y > 10) && (y <= 45)) {
-        drawBar(props.ctx, left, y + y, width, 20, '#275cf4');
+        drawBar(props.ctx, left, y + y, width, 20, '#cff670');
       }
 
-      drawBar(props.ctx, left, 0, width, y - 50, '#cd0126');
+      drawBar(props.ctx, left, 0, width, y - 50, '#fff');
     }
   }.bind(this);
 }
