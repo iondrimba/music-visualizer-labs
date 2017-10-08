@@ -5,7 +5,7 @@ function App() {
     firstCanvas.init('#first-wave');
 
     var firstAudio = document.getElementById('first');
-    var firstDemo = new Demo('demo.mp3', '.first-demo');
+    var firstDemo = new Demo('https://iondrimbafilho.me/demo.mp3', '.first-demo');
     firstDemo.init(firstAudio, firstCanvas);
     firstDemo.loadSound();
 
@@ -13,7 +13,7 @@ function App() {
     secondCanvas.init('#second-wave');
 
     var secondAudio = document.getElementById('second');
-    var secondDemo = new Demo('second-demo.mp3', '.second-demo');
+    var secondDemo = new Demo('https://iondrimbafilho.me/second-demo.mp3', '.second-demo');
     secondDemo.init(secondAudio, secondCanvas);
     secondDemo.loadSound();
 
