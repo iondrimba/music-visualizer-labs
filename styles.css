@@ -13,15 +13,87 @@ section {
   padding: 50px 0;
 }
 
-.credits, .controls {
+.canvas-wrapper {
+  position: relative;
+}
+
+.first-demo  .loader {
+  background: #1488CC;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+ 
+
+.second-demo  .loader {
+  background: #fc00ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #00dbde, #fc00ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+
+.loader {
+  position: absolute;
+  width: 100%;
+  height: 100%;  
+  transform: scale(0, 1);
+  transform-origin: left;
+  -webkit-transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.credits {
   margin-left: 20px;
 }
 
+.controls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: transparent;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;  
+  opacity: 0;
+  border: solid 3px;
+  transition: opacity .3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.removeLoader {
+  transform-origin: bottom;
+  -webkit-transition: transform .3s .3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform .3s .3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 canvas {
-  background-color: inherit;
+  background-color: transparent;
   transform: scaleY(-1);
   height: 300px;
 }
+
+.canvas-wrapper :hover + .controls, .controls:hover {
+  opacity: 1;
+}
+
+
+.control-hide {
+  opacity: 0;
+}
+
+.control-show {
+  opacity: 1;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
 
 
 h1 {
@@ -31,14 +103,19 @@ h1 {
 }
 
 button {
-  background-color: inherit;
+  background-color: transparent;
   color: #fff;
   border: 0;
-  border-radius: 2px;
-  padding: 10px;
-  margin-right: 5px;
   cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 0;
+  height: 32px;
+  outline: none;
 }
+
 
 a {
   color: #fff;
